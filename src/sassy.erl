@@ -1,5 +1,5 @@
 -module(sassy).
--export([compile/0]).
+-export([compile/1, compile_file/1]).
 
 -on_load(init/0).
 
@@ -19,5 +19,13 @@ init() ->
     end,
     erlang:load_nif(filename:join(PrivDir, ?MODULE), 0).
 
-compile() ->
+compile_file(Path) ->
+    case file:read_file(Path) of
+        {ok, Bin} ->
+            compile(binary_to_list(Bin));
+        Err ->
+            Err
+    end.
+
+compile(_Str) ->
     ?nif_stub.
