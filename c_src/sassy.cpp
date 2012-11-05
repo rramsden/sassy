@@ -1,8 +1,7 @@
 #include "libsass/sass_interface.h"
 #include "erl_nif.h"
 
-static ERL_NIF_TERM sassy_compile(ErlNifEnv* env, int argc,
-                               const ERL_NIF_TERM argv[]);
+static ERL_NIF_TERM sassy_compile(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 
 static ErlNifFunc nif_funcs[] =
 {
@@ -38,11 +37,8 @@ static ERL_NIF_TERM sassy_compile(ErlNifEnv* env, int argc,
 {
     ERL_NIF_TERM ret;
     int len;
-
     enif_get_list_length(env, argv[0], (unsigned int*)&len);
-
     char buffer[len];
-
     enif_get_string(env, argv[0], (char*)buffer, len + 1, ERL_NIF_LATIN1);
 
     struct sass_context* ctx = sass_new_context();
@@ -68,7 +64,6 @@ static ERL_NIF_TERM sassy_compile(ErlNifEnv* env, int argc,
 
     return ret;
 }
-
 
 static int on_load(ErlNifEnv* env, void** priv_data, ERL_NIF_TERM load_info)
 {

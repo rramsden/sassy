@@ -1,3 +1,7 @@
+% @doc
+% Some simple tests to assert that the NIF is working correctly
+% @end
+
 -module(sassy_test).
 -include_lib("eunit/include/eunit.hrl").
 

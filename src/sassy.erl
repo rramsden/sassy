@@ -1,3 +1,8 @@
+%% @doc
+%% @author Richard Ramsden <richard@rramsden.ca>
+%% Sassy - Simple NIF wrapper around libsass
+%% @end
+
 -module(sassy).
 -export([compile/1, compile_file/1]).
 -on_load(init/0).
@@ -7,6 +12,9 @@
 %% Public API
 %% ============================================================
 
+%% @doc
+%% Compile a file given the pathname
+%% @end
 -spec compile_file(string()) -> {ok, string()} | {error, string()}.
 
 compile_file(Path) ->
@@ -17,6 +25,9 @@ compile_file(Path) ->
             Err
     end.
 
+%% @doc
+%% Compile a string
+%% @end
 -spec compile(string()) -> {ok, string()} | {error, string()}.
 
 compile(_Str) ->
@@ -39,3 +50,25 @@ init() ->
             Path
     end,
     erlang:load_nif(filename:join(PrivDir, ?MODULE), 0).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
